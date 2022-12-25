@@ -372,7 +372,7 @@ def Plot(y,title,num_fig=1,ylim=True):
 	plt.figure(num_fig)
 	plt.clf()
 	plt.title(title)
-	plt.plot(y,'b')
+	plt.plot(y,'b') # Avg Return per episode  
 	
 	plt.plot(temp_y,'r')
 
@@ -437,7 +437,7 @@ if __name__=="__main__":
 	for i in range(ppo.max_iteration-5):
 		ppo.Train()
 		rewards = ppo.Evaluate()
-		Plot(rewards,'reward',0,False) #Avg Return per episode
+		Plot(rewards,'reward',0,False) #Avg Return per episode blue
 		with open('rewards.txt', 'a') as f:
     			f.write(str(rewards[-1]))
     			f.write('\n')
