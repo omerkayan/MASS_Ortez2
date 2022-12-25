@@ -287,9 +287,9 @@ Step()
 
 
 	
-	std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(19)->getName()<<"  "<<mCharacter->GetSkeleton()->getDof(19)->getPosition()<<std::endl;
-	std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(20)->getName()<<"  "<<mCharacter->GetSkeleton()->getDof(20)->getPosition()<<std::endl;
-	std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(21)->getName()<<"  "<<mCharacter->GetSkeleton()->getDof(21)->getPosition()<<std::endl;
+	//std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(19)->getName()<<"  "<<mCharacter->GetSkeleton()->getDof(19)->getPosition()<<std::endl;
+	//std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(20)->getName()<<"  "<<mCharacter->GetSkeleton()->getDof(20)->getPosition()<<std::endl;
+	//std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(21)->getName()<<"  "<<mCharacter->GetSkeleton()->getDof(21)->getPosition()<<std::endl;
 	
 	
 	
@@ -303,7 +303,7 @@ Step()
 	
 	x_tmp1=matrixToEulerZXY(mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getWorldTransform().linear())(1);
 	
-	std::cout<<"WORLDTRANSFORM"<<x_tmp1<<std::endl;
+	//std::cout<<"WORLDTRANSFORM"<<x_tmp1<<std::endl;
 	
 
 	tibia_aci<<x_tmp1<<std::endl;
@@ -443,11 +443,11 @@ GetReward()
 	Eigen::VectorXd cur_pos = skel->getPositions();
 	Eigen::VectorXd cur_vel = skel->getVelocities();
 	
-	std::cout<<"cur_pos pre "<<cur_pos[20]<<std::endl;
+	//std::cout<<"cur_pos pre "<<cur_pos[20]<<std::endl;
 
 
 	
-	std::cout<<"cur_pos post "<<cur_pos[20]<<std::endl;
+	//std::cout<<"cur_pos post "<<cur_pos[20]<<std::endl;
 	
 	
 	Eigen::VectorXd p_diff_all = skel->getPositionDifferences(mTargetPositions,cur_pos);
