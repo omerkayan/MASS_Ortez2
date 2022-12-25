@@ -227,7 +227,7 @@ class PPO(object):
 			states = self.env.GetStates()
 		
 	def OptimizeSimulationNN(self):
-		all_transitions = np.array(self.replay_buffer.buffer)
+		all_transitions = np.array(self.replay_buffer.buffer,dtype="object") #virgulden sonrasi eklendi.
 		for j in range(self.num_epochs):
 			np.random.shuffle(all_transitions)
 			for i in range(len(all_transitions)//self.batch_size):
@@ -268,7 +268,7 @@ class PPO(object):
 			print('Optimizing sim nn : {}/{}'.format(j+1,self.num_epochs),end='\r')
 		print('')
 	def OptimizeMuscleNN(self):
-		muscle_transitions = np.array(self.muscle_buffer.buffer)
+		muscle_transitions = np.array(self.muscle_buffer.bufferdtype="object") #virgulden sonrasi eklendi.
 		for j in range(self.num_epochs_muscle):
 			np.random.shuffle(muscle_transitions)
 			for i in range(len(muscle_transitions)//self.muscle_batch_size):
