@@ -382,10 +382,36 @@ def Plot(y,title,num_fig=1,ylim=True):
 	plt.pause(0.001)
 	plt.savefig('reward.png', dpi=100)
 	i_epoch+=1
+	if i_epoch == 1000:
+		plt.savefig('reward_1000.png', dpi=100)
+	if i_epoch == 2000:
+		plt.savefig('reward_2000.png', dpi=100)
+	if i_epoch == 3000:
+		plt.savefig('reward_3000.png', dpi=100)
+	if i_epoch == 4000:
+		plt.savefig('reward_4000.png', dpi=100)
+	if i_epoch == 5000:
+		plt.savefig('reward_5000.png', dpi=100)
 	if i_epoch == 6000:
 		plt.savefig('reward_6000.png', dpi=100)
+	if i_epoch == 7000:
+		plt.savefig('reward_7000.png', dpi=100)
+	if i_epoch == 8000:
+		plt.savefig('reward_8000.png', dpi=100)
 	if i_epoch == 9000:
 		plt.savefig('reward_9000.png', dpi=100)
+	if i_epoch == 10000:
+		plt.savefig('reward_10000.png', dpi=100)
+	if i_epoch == 11000:
+		plt.savefig('reward_11000.png', dpi=100)
+	if i_epoch == 12000:
+		plt.savefig('reward_12000.png', dpi=100)
+	if i_epoch == 13000:
+		plt.savefig('reward_13000.png', dpi=100)
+	if i_epoch == 14000:
+		plt.savefig('reward_14000.png', dpi=100)
+	if i_epoch == 15000:
+		plt.savefig('reward_15000.png', dpi=100)
 
 import argparse
 import os
@@ -411,7 +437,7 @@ if __name__=="__main__":
 	for i in range(ppo.max_iteration-5):
 		ppo.Train()
 		rewards = ppo.Evaluate()
-		Plot(rewards,'reward',0,False)
+		Plot(rewards,'reward',0,False) #Avg Return per episode
 		with open('rewards.txt', 'a') as f:
     			f.write(str(rewards[-1]))
     			f.write('\n')
