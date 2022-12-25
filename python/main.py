@@ -340,7 +340,7 @@ class PPO(object):
 		print('||Num Transition So far    : {}'.format(self.num_tuple_so_far))
 		print('||Num Transition           : {}'.format(self.num_tuple))
 		print('||Num Episode              : {}'.format(self.num_episode))
-		print('||Avg Return per episode   : {:.3f}'.format(self.sum_return/self.num_episode))
+		print('||Avg Return per episode (mavi) : {:.3f}'.format(self.sum_return/self.num_episode))
 		print('||Avg Reward per transition: {:.3f}'.format(self.sum_return/self.num_tuple))
 		print('||Avg Step per episode     : {:.1f}'.format(self.num_tuple/self.num_episode))
 		print('||Max Avg Retun So far     : {:.3f} at #{}'.format(self.max_return,self.max_return_epoch))
