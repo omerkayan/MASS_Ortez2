@@ -13,6 +13,7 @@ Makale 5: Learning Walking on a Musculoskeletal Human System with a Prosthesis <
 Makale 6: Scalable Muscle-Actuated Human Simulation and Control <br />
 Makale 7: State of the Art Review of Active and Passive Knee Orthoses <br />
 Makale 8: Learning a Control Policy for Fall Prevention on an Assistive Walking Device <br />
+Makale 9: Understanding the stability of deep control policies for biped locomotion <br />
 
 ## Çalışma Ortamı
 Buradaki tüm çalışmalar Ubuntu 18.04'te yapılmıştır.
