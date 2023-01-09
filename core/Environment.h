@@ -29,6 +29,15 @@ public:
 	void Initialize();
 	void Initialize(const std::string& meta_file,bool load_obj = false);
 public:
+	void disKuvvetUygulaOrta();
+	void disKuvvetUygulaUst();
+	void disKuvvetUygulaAlt();
+	void disTorkUygulaOrta();
+	void disTorkUygulaUst();
+	void disTorkUygulaAlt();
+	void disEtkiGosterOrta();
+	void disEtkiGosterUst();
+	void disEtkiGosterAlt();	
 	void ProsthesisControl();
 	void WriteActivation();
 	void Step();
