@@ -23,6 +23,8 @@ Environment()
 
 }
 
+std::shared_ptr<ArrowShape> mArrow; //ok kütüphanesi
+
 void
 Environment::
 Initialize(const std::string& meta_file,bool load_obj)
@@ -236,7 +238,128 @@ WriteActivation()
 	
 }
 
+void
+Environment::
+disKuvvetUygulaOrta()
+{
+mCharacter->GetSkeleton()->getBodyNode("TibiaL")->addExtForce(
+  Eigen::Vector3d(1, 1, 1), // linear force expressed in world coordinates
+  Eigen::Vector3d(0.1, 0.1, 0.1)  // offset from the origin of the body frame that you apply the linear force at. The offset is expressed in local coordinates
+);
+}
 
+void
+Environment::
+disKuvvetUygulaUst()
+{
+mCharacter->GetSkeleton()->getBodyNode("FemurL")->addExtForce(
+  Eigen::Vector3d(1, 1, 1), 
+  Eigen::Vector3d(0.1, 0.1, 0.1)  
+);
+}
+
+void
+Environment::
+disKuvvetUygulaAlt()
+{
+mCharacter->GetSkeleton()->getBodyNode("TibiaL")->addExtForce(
+  Eigen::Vector3d(1, 1, 1), 
+  Eigen::Vector3d(0.1, 0.1, 0.1)  
+);
+}
+
+void
+Environment::
+disTorkUygulaOrta()
+{
+mCharacter->GetSkeleton()->getBodyNode("TibiaL")->addExtTorque(
+  Eigen::Vector3d(1, 1, 1)  // torque (or angular force) expressed in world coordinates
+);
+}
+
+void
+Environment::
+disTorkUygulaUst()
+{
+mCharacter->GetSkeleton()->getBodyNode("FemurL")->addExtTorque(
+  Eigen::Vector3d(1, 1, 1)  
+);
+}
+
+void
+Environment::
+disTorkUygulaAlt()
+{
+mCharacter->GetSkeleton()->getBodyNode("TibiaL")->addExtTorque(
+  Eigen::Vector3d(1, 1, 1)  
+);
+}
+
+void
+Environment::
+disEtkiGosterOrta()
+{
+    ArrowShape::Properties arrow_properties;
+    arrow_properties.mRadius = 0.008;
+    mArrow = std::shared_ptr<ArrowShape>(new ArrowShape(
+             //Eigen::Vector3d(0.0295, (0.1215*arrow_pow/0.1215) , -0.0695 ),
+             //Eigen::Vector3d(0.0295, 0.0678 , -0.0695 ),
+//vektorler arasindaki vektorel uzaklık uygula. ornek vektor1x=1 vector2x=3. x1 den x3e 2 birimlik. Fark 0sa o yonde vektor olusmaz.
+  Eigen::Vector3d(-0.125, 0.21, 0), // linear force expressed in world coordinates (   //okun baslangic konumu +- degisikligi yon degistirir
+  Eigen::Vector3d(-0.05, 0.21, 0),  // offset from the origin of the body frame that you apply the linear force at. The offset is expressed in local coordinates // okun ucunun konumu x+ saga,y+ yukariya,z+ sayfa disina 
+             arrow_properties, dart::Color::Red(1.0)));  
+      
+    auto visualShapeNodes = mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getShapeNodesWith<VisualAspect>();
+    
+    visualShapeNodes[0]->getVisualAspect()->setColor(dart::Color::Green());   // "kutu rengi"
+    
+    mCharacter->GetSkeleton()->getBodyNode("TibiaL")->createShapeNodeWith<VisualAspect>(mArrow);
+  //  mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getShapeNodesWith<VisualAspect>()[0]->getVisualAspect()->setColor(dart::Color::Blue());
+
+
+//std::shared_ptr<ArrowShape> mArrow; >>>Environment:: Environment() altina
+//arrow temizlemeyi unutma
+// public: 	void disKuvvet(); environment.h a ekle
+//Step() icine disKuvvet();
+}
+
+void
+Environment::
+disEtkiGosterUst()
+{
+    ArrowShape::Properties arrow_properties;
+    arrow_properties.mRadius = 0.008;
+    mArrow = std::shared_ptr<ArrowShape>(new ArrowShape(
+
+  Eigen::Vector3d(0.13, -0.1, 0),
+  Eigen::Vector3d(0.055, -0.1, 0),
+             arrow_properties, dart::Color::Red(1.0)));  
+      
+    auto visualShapeNodes = mCharacter->GetSkeleton()->getBodyNode("FemurL")->getShapeNodesWith<VisualAspect>();
+    
+    visualShapeNodes[0]->getVisualAspect()->setColor(dart::Color::Green());   // "kutu rengi"
+    
+    mCharacter->GetSkeleton()->getBodyNode("FemurL")->createShapeNodeWith<VisualAspect>(mArrow);
+}
+
+void
+Environment::
+disEtkiGosterAlt()
+{
+    ArrowShape::Properties arrow_properties;
+    arrow_properties.mRadius = 0.008;
+    mArrow = std::shared_ptr<ArrowShape>(new ArrowShape(
+
+  Eigen::Vector3d(0.1325, 0.1, 0),
+  Eigen::Vector3d(0.0575, 0.1, 0),
+             arrow_properties, dart::Color::Red(1.0)));  
+      
+    auto visualShapeNodes = mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getShapeNodesWith<VisualAspect>();
+    
+    visualShapeNodes[0]->getVisualAspect()->setColor(dart::Color::Green());   // "kutu rengi"
+    
+    mCharacter->GetSkeleton()->getBodyNode("TibiaL")->createShapeNodeWith<VisualAspect>(mArrow);
+}
 
 void
 Environment::
@@ -323,7 +446,15 @@ Step()
 	
 	
 	
-	
+	disKuvvetUygulaOrta();
+	disKuvvetUygulaUst();
+	disKuvvetUygulaAlt();
+	disTorkUygulaOrta();
+	disTorkUygulaUst();
+	disTorkUygulaAlt();
+	disEtkiGosterOrta();
+	disEtkiGosterUst();
+	disEtkiGosterAlt();	
 	
 	mSimCount++;
 }
