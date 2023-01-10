@@ -305,8 +305,8 @@ disEtkiGosterOrta()
              //Eigen::Vector3d(0.0295, (0.1215*arrow_pow/0.1215) , -0.0695 ),
              //Eigen::Vector3d(0.0295, 0.0678 , -0.0695 ),
 //vektorler arasindaki vektorel uzaklık uygula. ornek vektor1x=1 vector2x=3. x1 den x3e 2 birimlik. Fark 0sa o yonde vektor olusmaz.
-  Eigen::Vector3d(-0.125, 0.21, 0), // linear force expressed in world coordinates (   //okun baslangic konumu +- degisikligi yon degistirir
-  Eigen::Vector3d(-0.05, 0.21, 0),  // offset from the origin of the body frame that you apply the linear force at. The offset is expressed in local coordinates // okun ucunun konumu x+ saga,y+ yukariya,z+ sayfa disina 
+  Eigen::Vector3d(-0.145, 0.21, 0), // linear force expressed in world coordinates (   //okun baslangic konumu +- degisikligi yon degistirir
+  Eigen::Vector3d(-0.07, 0.21, 0),  // offset from the origin of the body frame that you apply the linear force at. The offset is expressed in local coordinates // okun ucunun konumu x+ saga,y+ yukariya,z+ sayfa disina 
              arrow_properties, dart::Color::Red(1.0)));  
       
     auto visualShapeNodes = mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getShapeNodesWith<VisualAspect>();
@@ -331,8 +331,8 @@ disEtkiGosterUst()
     arrow_properties.mRadius = 0.008;
     mArrow = std::shared_ptr<ArrowShape>(new ArrowShape(
 
-  Eigen::Vector3d(0.13, -0.1, 0),
-  Eigen::Vector3d(0.055, -0.1, 0),
+  Eigen::Vector3d(0.135, -0.1, 0),
+  Eigen::Vector3d(0.06, -0.1, 0),
              arrow_properties, dart::Color::Red(1.0)));  
       
     auto visualShapeNodes = mCharacter->GetSkeleton()->getBodyNode("FemurL")->getShapeNodesWith<VisualAspect>();
