@@ -446,12 +446,12 @@ Step()
 	
 	
 	
-	disKuvvetUygulaOrta();
-	disKuvvetUygulaUst();
-	disKuvvetUygulaAlt();
-	disTorkUygulaOrta();
-	disTorkUygulaUst();
-	disTorkUygulaAlt();
+	//disKuvvetUygulaOrta();
+	//disKuvvetUygulaUst();
+	//disKuvvetUygulaAlt();
+	//disTorkUygulaOrta();
+	//disTorkUygulaUst();
+	//disTorkUygulaAlt();
 	disEtkiGosterOrta();
 	disEtkiGosterUst();
 	disEtkiGosterAlt();	
