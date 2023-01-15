@@ -452,9 +452,6 @@ Step()
 	//disTorkUygulaOrta();
 	//disTorkUygulaUst();
 	//disTorkUygulaAlt();
-	disEtkiGosterOrta();
-	disEtkiGosterUst();
-	disEtkiGosterAlt();	
 	
 	mSimCount++;
 }
@@ -647,7 +644,11 @@ GetReward()
 	double r = r_ee*(w_q*r_q + w_v*r_v);
 	
 	
+	
+	disEtkiGosterOrta();
+	disEtkiGosterUst();
+	disEtkiGosterAlt();	
+	
 	//std::cout<<"r_ee  "<<r_ee<<std::endl;
-
 	return r;
 }
