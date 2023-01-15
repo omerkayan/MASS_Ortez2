@@ -644,10 +644,10 @@ GetReward()
 	double r = r_ee*(w_q*r_q + w_v*r_v);
 	
 	
-	
-	disEtkiGosterOrta();
-	disEtkiGosterUst();
-	disEtkiGosterAlt();	
+	//kuvvetin yerini gosterme amacli. Egitim sirasinda burasi kapalı olunca hizli oluyor. NN klasoru kaydet. Burayi ac. Calistir. NNleri yerine getir.
+	//disEtkiGosterOrta();
+	//disEtkiGosterUst();
+	//disEtkiGosterAlt();	
 	
 	//std::cout<<"r_ee  "<<r_ee<<std::endl;
 	return r;
