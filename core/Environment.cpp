@@ -252,7 +252,7 @@ Environment::
 disKuvvetUygulaOrta()
 {
 mCharacter->GetSkeleton()->getBodyNode("TibiaL")->addExtForce(
-  Eigen::Vector3d(-0.145, 0.21, 0), // linear force expressed in world coordinates
+  Eigen::Vector3d(1000, 0.21, 0), // linear force expressed in world coordinates
   Eigen::Vector3d(-0.07, 0.21, 0),  // offset from the origin of the body frame that you apply the linear force at. The offset is expressed in local coordinates
   true,
   true
@@ -264,7 +264,7 @@ Environment::
 disKuvvetUygulaUst()
 {
 mCharacter->GetSkeleton()->getBodyNode("FemurL")->addExtForce(
-  Eigen::Vector3d(0.135, -0.1, 0), 
+  Eigen::Vector3d(-1000, -0.1, 0), 
   Eigen::Vector3d(0.06, -0.1, 0),
   true,
   true  
@@ -276,7 +276,7 @@ Environment::
 disKuvvetUygulaAlt()
 {
 mCharacter->GetSkeleton()->getBodyNode("TibiaL")->addExtForce(
-  Eigen::Vector3d(0.1325, 0.1, 0), 
+  Eigen::Vector3d(-1000, 0.1, 0), 
   Eigen::Vector3d(0.0575, 0.1, 0),
   true,
   true
