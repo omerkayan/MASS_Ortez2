@@ -237,14 +237,25 @@ WriteActivation()
 	//activationlevel_file<<mCharacter->GetMuscles()[0]->name<<",";
 	
 }
+/////////////////////////////////////////////////////////////////////////////////////
 
+//addExtForce(force, location, true, true);
+//https://dartsim.github.io/tutorials_pendulum.html#lesson-2-set-spring-and-damping-properties-for-joints
+/* void dart::dynamics::BodyNode::addExtForce 	( 	const Eigen::Vector3d &  	_force,
+		const Eigen::Vector3d &  	_offset = Eigen::Vector3d::Zero(),
+		bool  	_isForceLocal = false,
+		bool  	_isOffsetLocal = true 
+	) 	 */
+/////////////////////////////////////////////////////////////////////////////////////
 void
 Environment::
 disKuvvetUygulaOrta()
 {
 mCharacter->GetSkeleton()->getBodyNode("TibiaL")->addExtForce(
-  Eigen::Vector3d(1, 1, 1), // linear force expressed in world coordinates
-  Eigen::Vector3d(0.1, 0.1, 0.1)  // offset from the origin of the body frame that you apply the linear force at. The offset is expressed in local coordinates
+  Eigen::Vector3d(-0.145, 0.21, 0), // linear force expressed in world coordinates
+  Eigen::Vector3d(-0.07, 0.21, 0),  // offset from the origin of the body frame that you apply the linear force at. The offset is expressed in local coordinates
+  true,
+  true
 );
 }
 
@@ -253,8 +264,10 @@ Environment::
 disKuvvetUygulaUst()
 {
 mCharacter->GetSkeleton()->getBodyNode("FemurL")->addExtForce(
-  Eigen::Vector3d(1, 1, 1), 
-  Eigen::Vector3d(0.1, 0.1, 0.1)  
+  Eigen::Vector3d(0.135, -0.1, 0), 
+  Eigen::Vector3d(0.06, -0.1, 0),
+  true,
+  true  
 );
 }
 
@@ -263,11 +276,13 @@ Environment::
 disKuvvetUygulaAlt()
 {
 mCharacter->GetSkeleton()->getBodyNode("TibiaL")->addExtForce(
-  Eigen::Vector3d(1, 1, 1), 
-  Eigen::Vector3d(0.1, 0.1, 0.1)  
+  Eigen::Vector3d(0.1325, 0.1, 0), 
+  Eigen::Vector3d(0.0575, 0.1, 0),
+  true,
+  true
 );
 }
-
+/////////////////////////////////////////////////////////////////////////////////////
 void
 Environment::
 disTorkUygulaOrta()
@@ -294,6 +309,7 @@ mCharacter->GetSkeleton()->getBodyNode("TibiaL")->addExtTorque(
   Eigen::Vector3d(1, 1, 1)  
 );
 }
+/////////////////////////////////////////////////////////////////////////////////////
 
 void
 Environment::
@@ -360,6 +376,7 @@ disEtkiGosterAlt()
     
     mCharacter->GetSkeleton()->getBodyNode("TibiaL")->createShapeNodeWith<VisualAspect>(mArrow);
 }
+/////////////////////////////////////////////////////////////////////////////////////
 
 void
 Environment::
