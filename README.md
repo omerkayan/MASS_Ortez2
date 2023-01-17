@@ -110,7 +110,8 @@ Boşluk tuşu: Benzetimi başlat/durdur. <br />
 R: Benzetimi yeniden başlat. <br />
 O: Kutu ve iskelet yapısı arasında geçiş yapma. <br />
 F: Modeli sürekli kameradan takip etme. <br />
-S: Benzetimi bir adım ileri götürme. <br /> <br />
+S: Benzetimi bir adım ileri götürme. <br />
+C: Ekran görüntüsü çerçeve temelinde alma <br /> <br />
 Eğer benzetim görüntüsü video olarak kaydedilmek isternirse bu komutlar çalıştırılmalıdır. Video Ctrl+C yaparak sonlandırılır ve "Home" dosya yoluna "out.ogv "olarak kaydedilir.
 ```bash
 sudo apt install recordmydesktop
