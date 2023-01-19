@@ -9,6 +9,21 @@ using namespace dart::simulation;
 using namespace dart::dynamics;
 using namespace dart::math;
 using namespace MASS;
+/*
+*library
+std::ofstream tibia_tal_act;
+
+*initialize
+tibia_fem_aci.open ("tib_fem_aci.txt", std::ios::app);
+
+*reset bool rsi
+tibia_fem_aci.close();
+double x_tmp2;
+
+*step
+x_tmp2 = *(mCharacter->GetSkeleton()->getBodyNode("FemurL")->getChildJoint(0)->getPositions().data());
+tibia_fem_aci<<x_tmp2<<std::endl;  
+*/
 
 std::ofstream reward_file;
 std::ofstream activationlevel_file;
