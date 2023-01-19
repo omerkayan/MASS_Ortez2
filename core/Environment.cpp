@@ -27,9 +27,9 @@ tibia_fem_aci<<x_tmp2<<std::endl;
 
 std::ofstream reward_file;
 std::ofstream activationlevel_file;
-std::ofstream tibia_tal_act;
+std::ofstream tibia_tal_aci;
 std::ofstream tibia_fem_aci;
-std::ofstream tibia_aci;
+std::ofstream tibia_yer_aci;
 
 Environment::
 Environment()
@@ -169,14 +169,11 @@ Initialize()
         {    
         std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(i)->getName()<<" "<<i<<std::endl;
         }
-	
-	
-	
+		
 	reward_file.open ("reward_file.txt", std::ios::app);
-	tibia_tal_act.open ("tibia_tal_act.txt", std::ios::app);
-	tibia_aci.open ("tibia_aci.txt", std::ios::app);
-    tibia_fem_aci.open ("tib_fem_aci.txt", std::ios::app);
-	
+	tibia_tal_aci.open ("tibia_tal_aci.txt", std::ios::app);
+	tibia_yer_aci.open ("tibia_yer_aci.txt", std::ios::app);
+   	 tibia_fem_aci.open ("tib_fem_aci.txt", std::ios::app);
 	activationlevel_file.open ("activationlevel_file.csv", std::ios::app);
 	
 	int count2 = 0;
@@ -216,17 +213,17 @@ Reset(bool RSI)
 	mCharacter->GetSkeleton()->computeForwardKinematics(true,false,false);
 	
 	reward_file.close();
-	activationlevel_file.close();	
-    tibia_aci.close();
-    tibia_fem_aci.close();
-	tibia_tal_act.close();
+	activationlevel_file.close();
+	tibia_yer_aci.close();
+	tibia_fem_aci.close();
+    	tibia_tal_aci.close();
 }
 
 
 double x_tmp1 = 0;
 double x_tmp2;
 double x_tmp3 = 0;
-
+double x_tmp4;
 
 void
 Environment::
@@ -446,23 +443,25 @@ Step()
 	//std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(20)->getName()<<"  "<<mCharacter->GetSkeleton()->getDof(20)->getPosition()<<std::endl;
 	//std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(21)->getName()<<"  "<<mCharacter->GetSkeleton()->getDof(21)->getPosition()<<std::endl;
 	
-	
-	
-	
 	WriteActivation();
-	tibia_tal_act<<*(mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getChildJoint(0)->getPositions().data())<<std::endl;
-
-	// Get Femur-Tibia Angle
-	
-	x_tmp2 = *(mCharacter->GetSkeleton()->getBodyNode("FemurL")->getChildJoint(0)->getPositions().data());
-	
+		
+	// TibiaL - Ground Angle  (Add current velocity to cumulative velocity)
 	x_tmp1=matrixToEulerZXY(mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getWorldTransform().linear())(1);
 	
-	//std::cout<<"WORLDTRANSFORM"<<x_tmp1<<std::endl;
+	// FemurL - TibiaL Angle
+	x_tmp2 = *(mCharacter->GetSkeleton()->getBodyNode("FemurL")->getChildJoint(0)->getPositions().data());
 	
+	// TibiaL Angular Velocity
+	x_tmp3 = mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getAngularVelocity(Frame::World(),Frame::World())(0);
+	
+	// TibiaL - TalusL Angle
+	x_tmp4 = *(mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getChildJoint(0)->getPositions().data());
+	
+	//std::cout<<"WORLDTRANSFORM"<<x_tmp1<<std::endl;
 
-	tibia_aci<<x_tmp1<<std::endl;
-    tibia_fem_aci<<x_tmp2<<std::endl;   
+	tibia_yer_aci<<x_tmp1<<std::endl;
+    	tibia_fem_aci<<x_tmp2<<std::endl;   
+	tibia_tal_aci<<x_tmp4<<std::endl;   
 	
 	mWorld->step();
 	// Eigen::VectorXd p_des = mTargetPositions;
@@ -473,10 +472,7 @@ Step()
 	// mWorld->setTime(mWorld->getTime()+mWorld->getTimeStep());
 	//reward_file<<GetReward()<<std::endl;
 	
-	x_tmp3 = mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getAngularVelocity(Frame::World(),Frame::World())(0);
-	
-	
-	
+		
 	
 	//disKuvvetUygulaOrta();
 	//disKuvvetUygulaUst();
