@@ -14,21 +14,21 @@ using namespace MASS;
 std::ofstream tibia_tal_act;
 
 *initialize
-tibia_fem_aci.open ("tib_fem_aci.txt", std::ios::app);
+femur_tibia_aci.open ("femur_tibia_aci.txt", std::ios::app);
 
 *reset bool rsi
-tibia_fem_aci.close();
+tibia_femur_aci.close();
 double x_tmp2;
 
 *step
 x_tmp2 = *(mCharacter->GetSkeleton()->getBodyNode("FemurL")->getChildJoint(0)->getPositions().data());
-tibia_fem_aci<<x_tmp2<<std::endl;  
+femur_tibia_aci<<x_tmp2<<std::endl;  
 */
 
 std::ofstream reward_file;
 std::ofstream activationlevel_file;
-std::ofstream tibia_tal_aci;
-std::ofstream tibia_fem_aci;
+std::ofstream tibia_talus_aci;
+std::ofstream femur_tibia_aci;
 std::ofstream tibia_yer_aci;
 
 Environment::
@@ -171,9 +171,9 @@ Initialize()
         }
 		
 	reward_file.open ("reward_file.txt", std::ios::app);
-	tibia_tal_aci.open ("tibia_tal_aci.txt", std::ios::app);
+	tibia_talus_aci.open ("tibia_talus_aci.txt", std::ios::app);
 	tibia_yer_aci.open ("tibia_yer_aci.txt", std::ios::app);
-   	 tibia_fem_aci.open ("tib_fem_aci.txt", std::ios::app);
+   	 femur_tibia_aci.open ("femur_tibia_aci.txt", std::ios::app);
 	activationlevel_file.open ("activationlevel_file.csv", std::ios::app);
 	
 	int count2 = 0;
@@ -215,8 +215,8 @@ Reset(bool RSI)
 	reward_file.close();
 	activationlevel_file.close();
 	tibia_yer_aci.close();
-	tibia_fem_aci.close();
-    	tibia_tal_aci.close();
+	femur_tibia_aci.close();
+    	tibia_talus_aci.close();
 }
 
 
@@ -460,8 +460,8 @@ Step()
 	//std::cout<<"WORLDTRANSFORM"<<x_tmp1<<std::endl;
 
 	tibia_yer_aci<<x_tmp1<<std::endl;
-    	tibia_fem_aci<<x_tmp2<<std::endl;   
-	tibia_tal_aci<<x_tmp4<<std::endl;   
+    	femur_tibia_aci<<x_tmp2<<std::endl;   
+	tibia_talus_aci<<x_tmp4<<std::endl;   
 	
 	mWorld->step();
 	// Eigen::VectorXd p_des = mTargetPositions;
@@ -471,8 +471,6 @@ Step()
 	// mCharacter->GetSkeleton()->computeForwardKinematics(true,false,false);
 	// mWorld->setTime(mWorld->getTime()+mWorld->getTimeStep());
 	//reward_file<<GetReward()<<std::endl;
-	
-		
 	
 	//disKuvvetUygulaOrta();
 	//disKuvvetUygulaUst();
