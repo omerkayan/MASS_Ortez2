@@ -461,8 +461,8 @@ Step()
 	// TibiaL - TalusL Angle
 	x_tmp4 = *(mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getChildJoint(0)->getPositions().data());
 	
-	// Head - NeckAngle
-	x_tmp5 = *(mCharacter->GetSkeleton()->getBodyNode("Head")->getChildJoint(0)->getPositions().data());
+	// Head - Neck Angle
+	x_tmp5 = *(mCharacter->GetSkeleton()->getBodyNode("Neck")->getChildJoint(0)->getPositions().data());
 	
 	//std::cout<<"WORLDTRANSFORM"<<x_tmp1<<std::endl;
 
