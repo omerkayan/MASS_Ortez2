@@ -30,6 +30,7 @@ std::ofstream activationlevel_file;
 std::ofstream tibia_talus_aci;
 std::ofstream femur_tibia_aci;
 std::ofstream tibia_yer_aci;
+std::ofstream head_neck_aci;
 
 Environment::
 Environment()
@@ -173,8 +174,9 @@ Initialize()
 	reward_file.open ("reward_file.txt", std::ios::app);
 	tibia_talus_aci.open ("tibia_talus_aci.txt", std::ios::app);
 	tibia_yer_aci.open ("tibia_yer_aci.txt", std::ios::app);
-   	 femur_tibia_aci.open ("femur_tibia_aci.txt", std::ios::app);
+   	femur_tibia_aci.open ("femur_tibia_aci.txt", std::ios::app);
 	activationlevel_file.open ("activationlevel_file.csv", std::ios::app);
+	head_neck_aci.open ("head_neck_aci.txt", std::ios::app);
 	
 	int count2 = 0;
 	for(auto muscle : mCharacter->GetMuscles())
@@ -217,6 +219,7 @@ Reset(bool RSI)
 	tibia_yer_aci.close();
 	femur_tibia_aci.close();
     	tibia_talus_aci.close();
+	head_neck_aci.close();
 }
 
 
@@ -224,6 +227,7 @@ double x_tmp1 = 0;
 double x_tmp2;
 double x_tmp3 = 0;
 double x_tmp4;
+double x_tmp5;
 
 void
 Environment::
@@ -457,11 +461,15 @@ Step()
 	// TibiaL - TalusL Angle
 	x_tmp4 = *(mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getChildJoint(0)->getPositions().data());
 	
+	// Head - NeckAngle
+	x_tmp5 = *(mCharacter->GetSkeleton()->getBodyNode("Head")->getChildJoint(0)->getPositions().data());
+	
 	//std::cout<<"WORLDTRANSFORM"<<x_tmp1<<std::endl;
 
 	tibia_yer_aci<<x_tmp1<<std::endl;
     	femur_tibia_aci<<x_tmp2<<std::endl;   
-	tibia_talus_aci<<x_tmp4<<std::endl;   
+	tibia_talus_aci<<x_tmp4<<std::endl;  
+	head_neck_aci<<x_tmp5<<std::endl;  
 	
 	mWorld->step();
 	// Eigen::VectorXd p_des = mTargetPositions;
