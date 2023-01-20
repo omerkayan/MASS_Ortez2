@@ -31,6 +31,8 @@ std::ofstream tibia_talus_aci;
 std::ofstream femur_tibia_aci;
 std::ofstream tibia_yer_aci;
 std::ofstream head_neck_aci;
+std::ofstream handR_acisal_hiz;
+std::ofstream handL_acisal_hiz;
 
 Environment::
 Environment()
@@ -177,6 +179,8 @@ Initialize()
    	femur_tibia_aci.open ("femur_tibia_aci.txt", std::ios::app);
 	activationlevel_file.open ("activationlevel_file.csv", std::ios::app);
 	head_neck_aci.open ("head_neck_aci.txt", std::ios::app);
+	handR_acisal_hiz.open ("handR_acisal_hiz.txt", std::ios::app);
+	handL_acisal_hiz.open ("handL_acisal_hiz.txt", std::ios::app);
 	
 	int count2 = 0;
 	for(auto muscle : mCharacter->GetMuscles())
@@ -220,6 +224,8 @@ Reset(bool RSI)
 	femur_tibia_aci.close();
     	tibia_talus_aci.close();
 	head_neck_aci.close();
+	handR_acisal_hiz.close();
+	handL_acisal_hiz.close();
 }
 
 
@@ -228,6 +234,8 @@ double x_tmp2;
 double x_tmp3 = 0;
 double x_tmp4;
 double x_tmp5;
+double x_tmp6;
+double x_tmp7;
 
 void
 Environment::
@@ -464,12 +472,20 @@ Step()
 	// Head - Neck Angle
 	x_tmp5 = *(mCharacter->GetSkeleton()->getBodyNode("Neck")->getChildJoint(0)->getPositions().data());
 	
+	// handR Angular Velocity
+	x_tmp6 = mCharacter->GetSkeleton()->getBodyNode("HandR")->getAngularVelocity(Frame::World(),Frame::World())(0);
+	
+	// handL Angular Velocity
+	x_tmp7 = mCharacter->GetSkeleton()->getBodyNode("HandL")->getAngularVelocity(Frame::World(),Frame::World())(0);
+	
 	//std::cout<<"WORLDTRANSFORM"<<x_tmp1<<std::endl;
 
 	tibia_yer_aci<<x_tmp1<<std::endl;
     	femur_tibia_aci<<x_tmp2<<std::endl;   
 	tibia_talus_aci<<x_tmp4<<std::endl;  
 	head_neck_aci<<x_tmp5<<std::endl;  
+	handR_acisal_hiz<<x_tmp6<<std::endl;  
+	handL_acisal_hiz<<x_tmp7<<std::endl;  
 	
 	mWorld->step();
 	// Eigen::VectorXd p_des = mTargetPositions;
