@@ -173,6 +173,11 @@ Initialize()
 	Reset(false);
 	mNumState = GetState().rows();
 	
+	for(std::size_t i = 0; i < mCharacter->GetSkeleton()->getNumRigidBodyNodes()-1 ; ++i)
+        {    
+        std::cout<<mCharacter->GetSkeleton()->getBodyNode(i)->getName()<<" "<<i<<std::endl;
+        }	
+
 	for(std::size_t i = 0; i < mCharacter->GetSkeleton()->getNumDofs() ; ++i)
         {    
         std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(i)->getName()<<" "<<i<<std::endl;
