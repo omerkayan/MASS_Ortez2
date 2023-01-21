@@ -34,6 +34,11 @@ std::ofstream head_neck_aci;
 std::ofstream handR_acisal_hiz;
 std::ofstream handL_acisal_hiz;
 
+std::ofstream FemurL_x_desired_torque;
+std::ofstream FemurL_y_desired_torque;
+std::ofstream FemurL_z_desired_torque;
+std::ofstream TibiaL_desired_torque;
+
 Environment::
 Environment()
 	:mControlHz(30),mSimulationHz(900),mWorld(std::make_shared<World>()),mUseMuscle(true),w_q(0.65),w_v(0.1),w_ee(0.15),w_com(0.1)
@@ -182,6 +187,11 @@ Initialize()
 	handR_acisal_hiz.open ("handR_acisal_hiz.txt", std::ios::app);
 	handL_acisal_hiz.open ("handL_acisal_hiz.txt", std::ios::app);
 	
+	FemurL_x_desired_torque.open ("FemurL_x_desired_torque.txt", std::ios::app);
+	FemurL_y_desired_torque.open ("FemurL_y_desired_torque.txt", std::ios::app);
+	FemurL_z_desired_torque.open ("FemurL_z_desired_torque.txt", std::ios::app);
+	TibiaL_desired_torque.open ("TibiaL_desired_torque.txt", std::ios::app);
+	
 	int count2 = 0;
 	for(auto muscle : mCharacter->GetMuscles())
 	{
@@ -226,6 +236,11 @@ Reset(bool RSI)
 	head_neck_aci.close();
 	handR_acisal_hiz.close();
 	handL_acisal_hiz.close();
+	
+	FemurL_x_desired_torque.close(); 
+	FemurL_y_desired_torque.close();
+	FemurL_z_desired_torque.close();
+	TibiaL_desired_torque.close();
 }
 
 
@@ -503,6 +518,21 @@ Step()
 	//disTorkUygulaUst();
 	//disTorkUygulaAlt();
 	
+	//std::cout<<"Force: "<<*(mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getChildJoint(0)->getExternalForces().data())<<std::endl;
+	//std::cout<<"External Force: "<<mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getExternalForceLocal()<<std::endl;
+	
+	FemurL_x_desired_torque<<mDesiredTorque[15]<<std::endl; 
+	FemurL_y_desired_torque<<mDesiredTorque[16]<<std::endl; 
+	FemurL_z_desired_torque<<mDesiredTorque[17]<<std::endl; 
+	TibiaL_desired_torque<<mDesiredTorque[18]<<std::endl; 
+/*
+//std::cout<<mDesiredTorque[19];
+FemurL_x 15
+FemurL_y 16
+FemurL_z 17
+TibiaL 18
+*/
+	
 	mSimCount++;
 }
 
@@ -695,9 +725,9 @@ GetReward()
 	
 	
 	//kuvvetin yerini gosterme amacli. Egitim sirasinda burasi kapalı olunca hizli oluyor. NN klasoru kaydet. Burayi ac. Calistir. NNleri yerine getir.
-	disEtkiGosterOrta();
-	disEtkiGosterUst();
-	disEtkiGosterAlt();	
+	//disEtkiGosterOrta();
+	//disEtkiGosterUst();
+	//disEtkiGosterAlt();	
 	
 	//std::cout<<"r_ee  "<<r_ee<<std::endl;
 	return r;
