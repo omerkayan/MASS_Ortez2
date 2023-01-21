@@ -183,19 +183,19 @@ Initialize()
         std::cout<<"getDof "<<mCharacter->GetSkeleton()->getDof(i)->getName()<<" "<<i<<std::endl;
         }
 		
-	reward_file.open ("reward_file.txt", std::ios::app);
-	tibia_talus_aci.open ("tibia_talus_aci.txt", std::ios::app);
-	tibia_yer_aci.open ("tibia_yer_aci.txt", std::ios::app);
-   	femur_tibia_aci.open ("femur_tibia_aci.txt", std::ios::app);
-	activationlevel_file.open ("activationlevel_file.csv", std::ios::app);
-	head_neck_aci.open ("head_neck_aci.txt", std::ios::app);
-	handR_acisal_hiz.open ("handR_acisal_hiz.txt", std::ios::app);
-	handL_acisal_hiz.open ("handL_acisal_hiz.txt", std::ios::app);
+	reward_file.open ("1_reward_file.txt", std::ios::app);
+	tibia_talus_aci.open ("2_tibia_talus_aci.txt", std::ios::app);
+	tibia_yer_aci.open ("3_tibia_yer_aci.txt", std::ios::app);
+   	femur_tibia_aci.open ("4_femur_tibia_aci.txt", std::ios::app);
+	activationlevel_file.open ("5_activationlevel_file.csv", std::ios::app);
+	head_neck_aci.open ("6_head_neck_aci.txt", std::ios::app);
+	handR_acisal_hiz.open ("7_handR_acisal_hiz.txt", std::ios::app);
+	handL_acisal_hiz.open ("8_handL_acisal_hiz.txt", std::ios::app);
 	
-	FemurL_x_desired_torque.open ("FemurL_x_desired_torque.txt", std::ios::app);
-	FemurL_y_desired_torque.open ("FemurL_y_desired_torque.txt", std::ios::app);
-	FemurL_z_desired_torque.open ("FemurL_z_desired_torque.txt", std::ios::app);
-	TibiaL_desired_torque.open ("TibiaL_desired_torque.txt", std::ios::app);
+	FemurL_x_desired_torque.open ("9_FemurL_x_desired_torque.txt", std::ios::app);
+	FemurL_y_desired_torque.open ("10_FemurL_y_desired_torque.txt", std::ios::app);
+	FemurL_z_desired_torque.open ("11_FemurL_z_desired_torque.txt", std::ios::app);
+	TibiaL_desired_torque.open ("12_TibiaL_desired_torque.txt", std::ios::app);
 	
 	int count2 = 0;
 	for(auto muscle : mCharacter->GetMuscles())
