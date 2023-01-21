@@ -526,7 +526,7 @@ Step()
 	//std::cout<<"Force: "<<*(mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getChildJoint(0)->getExternalForces().data())<<std::endl;
 	//std::cout<<"External Force: "<<mCharacter->GetSkeleton()->getBodyNode("TibiaL")->getExternalForceLocal()<<std::endl;
 	
-	//mCharacter->GetSkeleton()->getDof(18)->setForce(-0.77489); // 18 numarali DOFa uygulanan torku %2.7 azaltmak (tork*97.3/100). Saat yonu -, saat tersi yon +
+	//mCharacter->GetSkeleton()->getDof(18)->setForce(1.27489); // 18 numarali DOFa uygulanan torku %2.7 azaltmak (tork*97.3/100). Saat yonu -, saat tersi yon +
 		
 	FemurL_x_desired_torque<<mDesiredTorque[15]<<std::endl; 
 	FemurL_y_desired_torque<<mDesiredTorque[16]<<std::endl; 
