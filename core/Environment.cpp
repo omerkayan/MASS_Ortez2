@@ -536,6 +536,9 @@ FemurL_x 15
 FemurL_y 16
 FemurL_z 17
 TibiaL 18
+
+FemurL 6
+TibiaL 7
 */
 	
 	mSimCount++;
