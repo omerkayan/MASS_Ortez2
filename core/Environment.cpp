@@ -537,7 +537,9 @@ Step()
 	FemurL_z_desired_torque<<mDesiredTorque[17]<<std::endl; 
 	TibiaL_desired_torque<<mDesiredTorque[18]<<std::endl; 
 /*
-//std::cout<<mDesiredTorque[19];
+//
+mDesiredTorque= 0-55, 0-55, 0-55 seklinde siralaniyor. mDesiredTorque[18] denirse TibiaL dofuna ait desired torque olur.
+std::cout<<mDesiredTorque[19];
 FemurL_x 15
 FemurL_y 16
 FemurL_z 17
