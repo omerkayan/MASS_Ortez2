@@ -540,13 +540,26 @@ Step()
 //
 mDesiredTorque= 0-55, 0-55, 0-55 seklinde siralaniyor. mDesiredTorque[18] denirse TibiaL dofuna ait desired torque olur.
 std::cout<<mDesiredTorque[19];
-FemurL_x 15
-FemurL_y 16
-FemurL_z 17
-TibiaL 18
+
+name=Femur, Parent=Pelvis, ball joint 3 dofs
+name=Tibia, Parent=Femur, revolute joint 1 dof
+name=Talus, Parent=Tibia, ball joint 3 dofs
+
+getDof FemurL_x 15
+getDof FemurL_y 16
+getDof FemurL_z 17
+getDof TibiaL 18
+getDof TalusL_x 19
+getDof TalusL_y 20
+getDof TalusL_z 21
+getDof FootThumbL 22
+getDof FootPinkyL 23
 
 FemurL 6
 TibiaL 7
+TalusL 8
+FootThumbL 9
+FootPinkyL 10
 */
 	
 	mSimCount++;
