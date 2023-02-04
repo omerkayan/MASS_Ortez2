@@ -542,6 +542,8 @@ Step()
 mDesiredTorque= 0-55, 0-55, 0-55 seklinde siralaniyor. mDesiredTorque[18] denirse TibiaL dofuna ait desired torque olur.
 std::cout<<mDesiredTorque[19];
 
+56 DoF= 1 Free(6), 8 Revolute(1) ve 14 Ball(3)
+
 name=Femur, Parent=Pelvis, ball joint 3 dofs
 name=Tibia, Parent=Femur, revolute joint 1 dof
 name=Talus, Parent=Tibia, ball joint 3 dofs
