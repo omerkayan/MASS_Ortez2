@@ -1,4 +1,5 @@
 # MASS_Ortez
+Karakterler: Sağlıklı, sakat ve pasif ortezli. <br />
 Buradaki sayfanın dili Türkçedir.
 
 Kaynak 1: https://github.com/lsw9021/MASS <br />
