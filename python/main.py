@@ -353,6 +353,7 @@ class PPO(object):
 
 import matplotlib
 import matplotlib.pyplot as plt
+import csv
 
 plt.ion()
 
@@ -372,9 +373,20 @@ def Plot(y,title,num_fig=1,ylim=True):
 	plt.figure(num_fig)
 	plt.clf()
 	plt.title(title)
-	plt.plot(y,'b') # Avg Return per episode  
-	
+
+	plt.plot(y,'b') # Avg Return per episode
+	with open('14_rewards_blue.txt', 'a') as f:
+    		f.write(str(y[-1]) + '\n')
+
+	with open('13_rewards.csv', 'a', newline='') as csvfile:
+    		fieldnames = ['Epoch', 'Average_return_per_episode_b', 'xxx_r']
+    		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    		#writer.writeheader()
+    		writer.writerow({'Epoch':i_epoch+1,'Average_return_per_episode_b': y[-1], 'xxx_r': temp_y[-1]})
+  	
 	plt.plot(temp_y,'r')
+	with open('15_rewards_red.txt', 'a') as f:
+    		f.write(str(temp_y[-1]) + '\n')
 
 	plt.show()
 	if ylim:
@@ -438,6 +450,3 @@ if __name__=="__main__":
 		ppo.Train()
 		rewards = ppo.Evaluate()
 		Plot(rewards,'reward',0,False) #Avg Return per episode blue
-		with open('rewards.txt', 'a') as f:
-    			f.write(str(rewards[-1]))
-    			f.write('\n')
