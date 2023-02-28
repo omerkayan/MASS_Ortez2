@@ -163,7 +163,7 @@
         <Waypoint body="FemurR" p="-0.144100 0.541600 -0.032800 " />
         <Waypoint body="TibiaR" p="-0.138200 0.488800 -0.038800 " />
     </Unit>
-    <Unit name="L_Bicep_Femoris_Short" f0="282.080000" lm="1.000000" lt="0.200000" pen_angle="0.000000" lmax="-0.100000">
+    <Unit name="L_Bicep_Femoris_Short" f0="63.160000" lm="1.000000" lt="0.200000" pen_angle="0.000000" lmax="-0.100000">
         <Waypoint body="FemurL" p="0.118200 0.729800 0.000200 " />
         <Waypoint body="FemurL" p="0.143500 0.545000 -0.029700 " />
         <Waypoint body="TibiaL" p="0.139800 0.489100 -0.034100 " />
